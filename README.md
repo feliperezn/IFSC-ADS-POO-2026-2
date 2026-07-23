@@ -4,4 +4,6 @@
 
 ## Aulas
 
-- 22/07/2026 - [Aula sobre Git e Markdown](2026-07-22-aula)
+- 22/07/2026 - [Aula sobre Git e Markdown](Aulas/2026-07-22-aula/)
+
+## Laboratórios
