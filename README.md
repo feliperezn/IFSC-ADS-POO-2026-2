@@ -1,4 +1,4 @@
-![GitHub License](https://img.shields.io/github/license/feliperezn/IFSC-ADS-POO-2026-2)
+![GitHub License](https://img.shields.io/github/license/feliperezn/IFSC-ADS-POO-2026-2?labelColor=blue&color=gray)
 
 # IFSC-ADS-POO-2026-2
 
