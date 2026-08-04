@@ -7,5 +7,8 @@
 ## Aulas
 
 - 22/07/2026 - [Aula sobre Git e Markdown](Aulas/2026-07-22-aula/)
+- 28/07/2026 - [Revisão Fundamentos Java](Aulas/2026-07-28-aula/)
+- 29/07/2026 - [Revisão Vetores](Aulas/2026-07-29-aula/)
+- 04/08/2026 - [Aula sobre Matrizes](Aulas/2026-08-04-aula/)
 
 ## Laboratórios
