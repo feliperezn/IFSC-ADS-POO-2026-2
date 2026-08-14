@@ -44,18 +44,9 @@ public class App {
         if (figura.equals("retangulo")) {
 
             int altura = Integer.parseInt(args[2]);
+            int espaco = tamanho -2;
 
             for (int i = 0; i < altura; i++) {
-
-                int espaco = (tamanho / 2);
-
-                if (tamanho % 2 != 0) {
-                    espaco = (tamanho / 2) + 1;
-                }
-
-                if ((tamanho / 2) % 2 != 0) {
-                    espaco = (tamanho / 2) + 1;
-                }
 
                 if (i > 0 && i < altura - 1) {
                     IO.print("*");
