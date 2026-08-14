@@ -4,8 +4,72 @@
 package ads.poo;
 
 public class App {
-
     public static void main(String[] args) {
+
+        String figura = args[0].toLowerCase();
+        int tamanho = Integer.parseInt(args[1]);
+
+        if (figura.equals("triangulo")) {
+
+            for (int i = 1; i <= tamanho; i++) {
+                IO.println("*".repeat(i));
+            }
+
+        }
+
+        if (figura.equals("losango")) {
+            int espaco = tamanho / 2;
+
+            for (int i = 0; i < tamanho; i += 2) {
+                if (espaco > 0) {
+                    IO.print(" ".repeat(espaco));
+                }
+                espaco--;
+                IO.println("*".repeat(i + 1));
+            }
+
+            espaco = 1;
+
+            for (int i = tamanho - 2; i >= 0; i -= 2) {
+
+                if (espaco < tamanho) {
+                    IO.print(" ".repeat(espaco));
+                }
+
+                espaco++;
+                IO.println("*".repeat(i));
+            }
+        }
+
+        if (figura.equals("retangulo")) {
+
+            int altura = Integer.parseInt(args[2]);
+
+            for (int i = 0; i < altura; i++) {
+
+                int espaco = (tamanho / 2);
+
+                if (tamanho % 2 != 0) {
+                    espaco = (tamanho / 2) + 1;
+                }
+
+                if ((tamanho / 2) % 2 != 0) {
+                    espaco = (tamanho / 2) + 1;
+                }
+
+                if (i > 0 && i < altura - 1) {
+                    IO.print("*");
+                    IO.print(" ".repeat(espaco));
+                    IO.print("*");
+                    IO.println();
+                    continue;
+                }
+
+                IO.print("*".repeat(tamanho));
+                IO.println();
+            }
+
+        }
 
     }
 }
