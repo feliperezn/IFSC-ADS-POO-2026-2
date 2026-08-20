@@ -8,12 +8,17 @@ public class Car {
   // methods
   public void accelerate(int increment) {
 
-    if ((currentSpeed + increment) > maxSpeed) {
-      currentSpeed = maxSpeed;
-    } else {
-      currentSpeed += increment;
-    }
+    currentSpeed = Math.min(currentSpeed + increment, maxSpeed);
 
+  }
+
+  public void brake(int decrement) {
+    // 0 min
+    if (currentSpeed - decrement >= 0) {
+      currentSpeed -= decrement;
+    } else {
+      currentSpeed = 0;
+    }
   }
 
   public void setMaxSpeed(int speed) {
