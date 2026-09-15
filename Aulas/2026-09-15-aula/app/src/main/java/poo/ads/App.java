@@ -3,12 +3,56 @@
  */
 package poo.ads;
 
+import java.util.ArrayList;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+        ArrayList<String> lista = new ArrayList<>();
+
+        // lista.add("POO");
+        // lista.add("ADS");
+        // lista.add("IFSC");
+
+        // lista.add(1, "SJE");
+
+        // for i
+        for (int i = 0; i < lista.size(); i++) {
+            IO.println(lista.get(i));
+        }
+
+        // for each
+        for (String e : lista) {
+            IO.println(e);
+        }
+
+        // Método próprio e lambda
+        lista.forEach(e -> {
+            IO.println(e);
+        });
+
+        lista.forEach(e -> IO.println(e));
+
+        // method reference
+        lista.forEach(IO::println);
+
+        // remover item
+        lista.removeIf(e -> e.equals("ADS"));
+        lista.forEach(e -> IO.println(e));
+
+        ArrayList<Pessoa> agenda = new ArrayList<>();
+
+        agenda.add(new Pessoa("Juca", "juca@example.com"));
+        agenda.add(new Pessoa("Ana", "ana@example.com"));
+        agenda.add(new Pessoa("Pedro", "pedro@example.com"));
+        agenda.add(new Pessoa("Juca", "juca@example.org"));
+
+        // TODO
+
+        agenda.removeIf(p -> p.getNome().equals("Juca"));
+
+        agenda.forEach(IO::println);
+
     }
 }
