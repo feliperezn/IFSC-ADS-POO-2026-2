@@ -48,8 +48,6 @@ public class App {
         agenda.add(new Pessoa("Pedro", "pedro@example.com"));
         agenda.add(new Pessoa("Juca", "juca@example.org"));
 
-        // TODO
-
         agenda.removeIf(p -> p.getNome().equals("Juca"));
 
         agenda.forEach(IO::println);
