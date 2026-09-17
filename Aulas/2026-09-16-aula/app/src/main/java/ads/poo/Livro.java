@@ -1,19 +1,19 @@
 package ads.poo;
 
 public class Livro {
-    private final int ISBN;
+    private final String ISBN;
     private String titulo;
     private String autor;
     private int ano;
 
-    public Livro(int iSBN, String titulo, String autor, int ano) {
+    public Livro(String iSBN, String titulo, String autor, int ano) {
         ISBN = iSBN;
         this.titulo = titulo;
         this.autor = autor;
         this.ano = ano;
     }
 
-    public int getISBN() {
+    public String getISBN() {
         return ISBN;
     }
 

@@ -3,8 +3,82 @@
  */
 package ads.poo;
 
+import java.util.HashMap;
+import java.util.Scanner;
+
 public class App {
+
+    Scanner sc = new Scanner(System.in);
+
+    private HashMap<String, Livro> livros = new HashMap<>();
+
     public static void main(String[] args) {
 
+        App app = new App();
+
+        app.menu();
+
     }
+
+    public void menu() {
+        int opcao = -1;
+
+        do {
+            IO.println("** LIVROS **");
+            IO.println("1 - Cadastrar um Livro");
+            IO.println("2 - Listar Titulo e ISBN");
+            IO.println("3 - Consultar ISBN");
+            IO.println("0 - Sair");
+            IO.println("------------");
+            String entrada = IO.readln("Escolha uma opção: ");
+            opcao = Integer.parseInt(entrada);
+
+            switch (opcao) {
+                case 1 -> cadastrar();
+                case 2 -> listarISBNeTitulo();
+                case 3 -> consultarISBN();
+            }
+
+        } while (opcao != 0);
+    }
+
+    public void cadastrar() {
+        String isbn = IO.readln("Entre com o ISBN: ");
+
+        if (livros.get(isbn) == null) {
+            String titulo = IO.readln("Entre com o Título: ");
+            String autor = IO.readln("Entre com o autor: ");
+            String anoString = IO.readln("Entre com o ano: ");
+            int ano = Integer.parseInt(anoString);
+
+            livros.put(isbn, new Livro(isbn, titulo, autor, ano));
+
+            IO.println("Livro cadastrado com sucesso!");
+        } else {
+            IO.println("ISBN já cadastrado!");
+        }
+    }
+
+    public void listarISBNeTitulo() {
+        // Imprimir elementos
+        livros.forEach((chave, valor) -> {
+            String isbn = valor.getISBN();
+            String titulo = valor.getTitulo();
+
+            IO.print("ISBN: " + isbn);
+            IO.println(" |Título: " + titulo);
+        });
+    }
+
+    public void consultarISBN() {
+        IO.print("Digite o ISBN: ");
+        int isbn = sc.nextInt();
+
+        if (livros.get(isbn) != null) {
+            IO.println("Livro não encontrado");
+        } else {
+            IO.println(livros.get(isbn));
+        }
+    }
+
 }
