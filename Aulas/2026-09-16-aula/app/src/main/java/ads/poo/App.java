@@ -53,9 +53,9 @@ public class App {
         String isbn = IO.readln("-> Entre com o ISBN: ");
 
         if (livros.get(isbn) == null) {
-            String titulo = IO.readln("Entre com o Título: ");
-            String autor = IO.readln("Entre com o autor: ");
-            String anoString = IO.readln("Entre com o ano: ");
+            String titulo = IO.readln("-> Entre com o Título: ");
+            String autor = IO.readln("-> Entre com o autor: ");
+            String anoString = IO.readln("-> Entre com o ano: ");
             int ano = Integer.parseInt(anoString);
 
             livros.put(isbn, new Livro(isbn, titulo, autor, ano));
@@ -79,21 +79,23 @@ public class App {
 
     public void consultarISBN() {
 
-        String isbn = IO.readln("Digite o ISBN: ");
+        String isbn = IO.readln("-> Digite o ISBN: ");
 
         if (livros.get(isbn) != null) {
-            String titulo = livros.get(isbn).getTitulo();
-            String autor = livros.get(isbn).getAutor();
-            int ano = livros.get(isbn).getAno();
+            Livro l = livros.get(isbn);
+
+            String titulo = l.getTitulo();
+            String autor = l.getAutor();
+            int ano = l.getAno();
 
             IO.println("Título: " + titulo + " | Autor: " + autor + " | Ano: " + ano);
         } else {
-            IO.println("Livro não encontrado");
+            IO.println("-> Livro não encontrado");
         }
     }
 
     public void consultarAutor() {
-        String autor = IO.readln("Digite o nome do Autor: ");
+        String autor = IO.readln("-> Digite o nome do Autor: ");
 
         for (var e : livros.entrySet()) {
             if (e.getValue().getAutor().equals(autor)) {
