@@ -13,37 +13,44 @@ public class App {
     private HashMap<String, Livro> livros = new HashMap<>();
 
     public static void main(String[] args) {
-
         App app = new App();
-
         app.menu();
-
     }
 
     public void menu() {
         int opcao = -1;
 
         do {
+            IO.println("------------");
             IO.println("** LIVROS **");
             IO.println("1 - Cadastrar um Livro");
             IO.println("2 - Listar Titulo e ISBN");
             IO.println("3 - Consultar ISBN");
+            IO.println("4 - Consultar por Autor");
+            IO.println("5 - Consultar por Ano");
+            IO.println("6 - Atualizar dados");
+            IO.println("7 - Remover Livro");
             IO.println("0 - Sair");
             IO.println("------------");
-            String entrada = IO.readln("Escolha uma opção: ");
+            String entrada = IO.readln("-> Escolha uma opção: ");
             opcao = Integer.parseInt(entrada);
+            IO.println("------------");
 
             switch (opcao) {
                 case 1 -> cadastrar();
                 case 2 -> listarISBNeTitulo();
                 case 3 -> consultarISBN();
+                case 4 -> consultarAutor();
+                case 5 -> consultarAno();
+                case 6 -> atualizarDados();
+                case 7 -> removerLivro();
             }
 
         } while (opcao != 0);
     }
 
     public void cadastrar() {
-        String isbn = IO.readln("Entre com o ISBN: ");
+        String isbn = IO.readln("-> Entre com o ISBN: ");
 
         if (livros.get(isbn) == null) {
             String titulo = IO.readln("Entre com o Título: ");
@@ -53,9 +60,9 @@ public class App {
 
             livros.put(isbn, new Livro(isbn, titulo, autor, ano));
 
-            IO.println("Livro cadastrado com sucesso!");
+            IO.println("-> Livro " + titulo + " cadastrado com sucesso!");
         } else {
-            IO.println("ISBN já cadastrado!");
+            IO.println("-> ISBN já cadastrado!");
         }
     }
 
@@ -71,13 +78,74 @@ public class App {
     }
 
     public void consultarISBN() {
-        IO.print("Digite o ISBN: ");
-        int isbn = sc.nextInt();
+
+        String isbn = IO.readln("Digite o ISBN: ");
 
         if (livros.get(isbn) != null) {
-            IO.println("Livro não encontrado");
+            String titulo = livros.get(isbn).getTitulo();
+            String autor = livros.get(isbn).getAutor();
+            int ano = livros.get(isbn).getAno();
+
+            IO.println("Título: " + titulo + " | Autor: " + autor + " | Ano: " + ano);
         } else {
-            IO.println(livros.get(isbn));
+            IO.println("Livro não encontrado");
+        }
+    }
+
+    public void consultarAutor() {
+        String autor = IO.readln("Digite o nome do Autor: ");
+
+        for (var e : livros.entrySet()) {
+            if (e.getValue().getAutor().equals(autor)) {
+                IO.print("ISBN: " + e.getValue().getISBN());
+                IO.println("| Título: " + e.getValue().getTitulo());
+            }
+        }
+    }
+
+    public void consultarAno() {
+        IO.print("-> Digite o Ano: ");
+        int ano = sc.nextInt();
+
+        for (var e : livros.entrySet()) {
+            if (e.getValue().getAno() == ano) {
+                IO.print("ISBN: " + e.getValue().getISBN());
+                IO.println("| Título: " + e.getValue().getTitulo());
+            }
+        }
+    }
+
+    public void atualizarDados() {
+        String isbn = IO.readln("-> Digite o ISBN: ");
+
+        if (livros.get(isbn) != null) {
+
+            IO.println("-> Atualizando livro " + livros.get(isbn).getTitulo() + " ...");
+            String titulo = IO.readln("-> Novo Título: ");
+            String autor = IO.readln("-> Novo autor: ");
+            String anoString = IO.readln("-> Novo ano: ");
+            int ano = Integer.parseInt(anoString);
+
+            livros.put(isbn, new Livro(isbn, titulo, autor, ano));
+            livros.get(isbn).setTitulo(titulo);
+            livros.get(isbn).setAutor(autor);
+            livros.get(isbn).setAno(ano);
+
+            IO.println("-> ISBN " + isbn + " atualizado com sucesso!");
+        } else {
+            IO.println("-> ISBN não encontrado!");
+        }
+    }
+
+    public void removerLivro() {
+        String isbn = IO.readln("-> Digite o ISBN: ");
+
+        if (livros.get(isbn) != null) {
+            IO.println("-> Removendo livro " + livros.get(isbn).getTitulo() + "...");
+            livros.remove(isbn);
+            IO.println("-> Livro removido!");
+        } else {
+            IO.println("-> Livro não encontrado!");
         }
     }
 
