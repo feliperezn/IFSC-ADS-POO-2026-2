@@ -6,6 +6,12 @@ package ads.poo;
 import java.util.HashMap;
 import java.util.Scanner;
 
+// import com.google.zxing.BarcodeFormat;
+// import com.google.zxing.common.BitMatrix;
+// import com.google.zxing.oned.EAN13Writer;
+
+// import net.datafaker.Faker;
+
 public class App {
 
     Scanner sc = new Scanner(System.in);
@@ -15,6 +21,32 @@ public class App {
     public static void main(String[] args) {
         App app = new App();
         app.menu();
+
+        // int largura = 105;
+        // int altura = 5;
+        // String isbn = "9788576053576";
+        // EAN13Writer writer = new EAN13Writer();
+        // // Gera a matriz de bits para o formato EAN_13
+        // BitMatrix bitMatrix = writer.encode(isbn, BarcodeFormat.EAN_13, largura, 1);
+        // // Renderiza o código de barras usando blocos cheios █ e espaços em branco
+        // // https://www.unicodepedia.com/unicode/block-elements/2588/full-block/
+        // for (int i = 0; i < altura; i++) {
+        // for (int x = 0; x < bitMatrix.getWidth(); x++) {
+        // if (bitMatrix.get(x, 0)) {
+        // System.out.print("\u2588");
+        // } else {
+        // System.out.print(" ");
+        // }
+        // }
+        // System.out.println(); // Quebra de linha para a próxima camada da barra
+        // }
+        // System.out.println("ISBN-13: " + isbn);
+
+        // Faker faker = new Faker();
+
+        // String nome = faker.name().fullName();
+        // String cpf = faker.cpf().valid();
+        // String endereco = faker.address().country();
     }
 
     public void menu() {
