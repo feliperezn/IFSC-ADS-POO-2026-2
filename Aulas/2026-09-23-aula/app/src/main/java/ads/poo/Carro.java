@@ -9,23 +9,19 @@ public class Carro {
     }
 
     public void acelerar(int v) {
+        this.propulsor.acelerar(v);
+    }
 
+    public void trocarMotor(Motor mo) {
+        this.propulsor = mo;
     }
 
     public String getMarca() {
         return marca;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
     public Motor getPropulsor() {
         return propulsor;
-    }
-
-    public void setPropulsor(Motor propulsor) {
-        this.propulsor = propulsor;
     }
 
 }
