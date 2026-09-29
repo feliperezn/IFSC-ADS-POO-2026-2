@@ -60,3 +60,29 @@ classDiagram
     Carro o-- Motor
 
 ```
+
+### Exemplo 3
+```mermaid
+classDiagram
+    direction LR
+
+    class Aluno {
+        -nome: String
+        -matricula: int
+        -email: String
+        -endereco: Endereco
+        +Aluno(n: String, m: int, em: String, endereco: Endereco)
+    }
+
+    class Endereco {
+        -rua: String
+        -numero: String
+        -bairro: String
+        -cidade: String
+        -uf: String
+        -cep: String
+        +Endereco(r: String, c: int)
+    }
+
+    Aluno "1" *-- "1" Endereco
+```
