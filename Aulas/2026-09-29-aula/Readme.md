@@ -20,6 +20,6 @@ class Motor {
     +Motor(t: String);
 }
 
-Aviao "1" o-- "1..*" Motor
+Aviao "1" *-- "1..8" Motor
 
 ```
