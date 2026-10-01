@@ -4,7 +4,7 @@
 classDiagram
     class Robo {
         -mapa: int[2]
-        -nivelBateria: int
+        -bateria: Bateria
         -posicaoAtual: Coordenada
         +Robo(b: Bateria, m: int[2], p: Coordenada)
         +mover(x: int, y: int) boolean
@@ -16,6 +16,7 @@ classDiagram
     }
 
     class Bateria {
+        -nivelBateria: int
         -tipo: String
         -capacidade: int
         +Bateria(t: String, c: int)
