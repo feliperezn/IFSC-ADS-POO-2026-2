@@ -81,25 +81,44 @@ Para cada um dos exercícios abaixo, crie um diagrama UML com associações de h
         direction BT
 
     class Transporte {
-
+        - marca : String
+        - modelo : String
+        - ano : LocalDate
+        + acelerar()
     }
 
     class Terrestre {
-
+        - tipoCambio : String
     }
+
+    class Caminhao {
+        - carga : ArrayList~Carga~
+    }
+
+    class Carga {
+        - tipo : String
+        - quantidade : int
+    }
+
 
     class Carro {
-
+        - tipo : String
+        - litrosPortaMala : int
     }
 
+    class Aviao {
+        - tipoDoMotor : String
+        + ativarFlap : boolean
+    }
+
+
+
     Terrestre --|> Transporte
-    Marítimo --|> Transporte
-    Aéreo --|> Transporte
 
     Carro --|> Terrestre
     Caminhao --|> Terrestre
+    Caminhao o-- Carga
 
-    Barco --|> Marítimo
-    Aviao --|> Aéreo
-
+    Barco --|> Transporte
+    Aviao --|> Transporte
 ```
