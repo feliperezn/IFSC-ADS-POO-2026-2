@@ -1,6 +1,6 @@
 package ads.poo.entity;
 
-public class Aldeao extends Personagem {
+public class Aldeao extends Personagem implements Guerreiro, Coletor {
 
     public Aldeao() {
         super(25, 1, 0.8);
@@ -14,6 +14,16 @@ public class Aldeao extends Personagem {
     @Override
     public String atacar() {
         return "Aldeao atacando com força: " + this.ataque;
+    }
+
+    @Override
+    public String coletarMadeira() {
+        return "Aldeao coletando madeira";
+    }
+
+    @Override
+    public String coletarOuro() {
+        return "Aldeao coletando ouro";
     }
 
 }
