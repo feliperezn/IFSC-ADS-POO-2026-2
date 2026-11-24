@@ -5,6 +5,7 @@ classDiagram
 class Biblioteca {
     - livros : ArrayList~Livro~
     - usuarios : ArrayList~Usuario~
+    - emprestimos : ArrayList~Emprestimo~
 }
 
 class Livro{
