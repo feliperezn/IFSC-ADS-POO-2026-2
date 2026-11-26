@@ -1,10 +1,12 @@
 package ads.poo;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import ads.poo.exception.BibliotecaException;
 import ads.poo.exception.LimiteEmprestimosException;
 import ads.poo.exception.LivroJaEmprestadoException;
+import ads.poo.exception.LivroNaoEmprestadoException;
 import ads.poo.exception.LivroNaoEncontradoException;
 
 public class Biblioteca {
@@ -13,13 +15,13 @@ public class Biblioteca {
     ArrayList<Emprestimo> emprestimos = new ArrayList<>();
 
     public void emprestar(Usuario usuario, int idLivro) throws BibliotecaException {
-        Boolean livroEncontrado = null;
+        Livro livroEncontrado = null;
         Boolean livroJaEmprestado = null;
         int totalEmprestimos = 0;
 
         for (Livro livro : livros) {
             if (livro.getId() == idLivro) {
-                livroEncontrado = true;
+                livroEncontrado = livro;
                 break;
             }
         }
@@ -52,18 +54,27 @@ public class Biblioteca {
             }
         }
 
-        // TODO: Criar um Emprestimo com usuário, livro e data atual.
-
-        if (livroEncontrado && !livroJaEmprestado) {
-
+        // Criar emprestimo
+        if ((livroEncontrado != null) && !livroJaEmprestado && (totalEmprestimos < 3)) {
+            emprestimos.add(new Emprestimo(usuario, livroEncontrado, LocalDate.now()));
         }
-        // TODO: Adicionar o empréstimo à lista de empréstimos ativos.
     }
 
     public void devolver(Usuario usuario, int idLivro) throws BibliotecaException {
-        // TODO: Localizar o empréstimo ativo correspondente ao usuário e ao livro.
-        // TODO: Se não existir, lançar LivroNaoEmprestadoException.
-        // TODO: Remover o empréstimo encontrado da lista.
+        Boolean livroEmprestado = null;
+
+        // Verificar se está emprestado
+        for (Emprestimo emprestimo : emprestimos) {
+            if (emprestimo.getLivro().getId() == idLivro) {
+                livroEmprestado = true;
+                // TODO se a data de devolucao esta vazia
+                emprestimo.devolver(LocalDate.now());
+            }
+        }
+
+        if (livroEmprestado == null) {
+            throw new LivroNaoEmprestadoException("O livro id " + idLivro + " não está emprestado");
+        }
     }
 
 }
