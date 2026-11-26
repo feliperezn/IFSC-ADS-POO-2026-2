@@ -13,4 +13,11 @@ public class Emprestimo {
         this.dataEmp = new Date();
     }
 
+    public Livro getLivro() {
+        return livro;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
 }

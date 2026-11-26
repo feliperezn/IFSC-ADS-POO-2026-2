@@ -8,4 +8,8 @@ public class Livro {
         this.id = id;
         this.nome = nome;
     }
+
+    public int getId() {
+        return id;
+    }
 }
